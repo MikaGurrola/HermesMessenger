@@ -4,13 +4,13 @@
 .cvs
 
 # Dependency directories
-Login-with-react/node_modules
+app/node_modules
 
 # Optional npm cache directory
-Login-with-react/.npm
+app/.npm
 
 # Optional eslint cache
-Login-with-react.eslintcache
+app.eslintcache
 
 
 # large/disallowed file types
