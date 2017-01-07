@@ -15,7 +15,7 @@ class MessageList extends React.Component {
 			context: this, 
 			asArray: true,
 			then(data) {
-				console.log(data);
+				// console.log(data);
 				this.setState({messages: data});
 			}
 		});
@@ -25,13 +25,13 @@ class MessageList extends React.Component {
 	componentWillUnmount() {
 		base.removeBinding(this.ref);
 	}
-
 	// TODO : Pull this function from App component
 	renderMessages(key) {
 		const message = this.state.messages[key];
 		// console.log(message);
 		return (
-			<li key={key}>
+			<li className="message" key={key}>
+				<img src={message.image}  alt={"This is an image of " + message.user + " the great!"} />
 				<p>{message.user} says {message.message}</p>
 			</li>
 		)
@@ -41,7 +41,7 @@ class MessageList extends React.Component {
 		return(
 			<div>
 				<h1>MessageList Component</h1>
-				<ul>
+				<ul className="message-list">
 					{Object.keys(this.state.messages).map(this.renderMessages)}
 				</ul>
 			</div>
