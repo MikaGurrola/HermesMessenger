@@ -41,6 +41,7 @@ class MessageList extends React.Component {
 		return(
 			<div>
 				<h1>MessageList Component</h1>
+				<h3>Welcome to the {this.props.chatRoom} chat room</h3>
 				<ul className="message-list">
 					{Object.keys(this.state.messages).map(this.renderMessages)}
 				</ul>

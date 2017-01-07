@@ -18,15 +18,17 @@ class ComposeMessage extends React.Component {
 
 	render() {
 		return(
-			<div>
-				<h1>ComposeMessage Component</h1>
+		<div>
+			<h1>ComposeMessage Component</h1>
+			<div className="compose-message">
+				<img src={this.props.user.pic} alt=""/>
+				<span>{this.props.user.name}</span>
 				<form ref={(input) => this.messageForm = input} className="" onSubmit={(e) => this.createMessage(e)}>
 					<input ref={(input) => this.message = input } type="text" placeholder="Hello World"/>
 					<button type="submit">Send</button>
 				</form>
-				<p>{this.props.user.name}</p>
-				<img src={this.props.user.pic} alt=""/>
 			</div>
+		</div>
 		)
 	}
 }
