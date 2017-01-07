@@ -2,7 +2,7 @@ import React from 'react';
 import base from '../base.js';
 
 import MessageList from './MessageList';
-// import MessageListPreview from './MessageListPreview';
+import ComposeMessage from './ComposeMessage';
 
 class App extends React.Component {
 	constructor(){
@@ -13,6 +13,7 @@ class App extends React.Component {
 		this.logout = this.logout.bind(this);
 		this.changeRoom = this.changeRoom.bind(this);
 		this.renderMessages = this.renderMessages.bind(this);
+		this.newMessage = this.newMessage.bind(this);
 
 		this.state = {
 			user: {},
@@ -82,11 +83,26 @@ class App extends React.Component {
 		this.context.router.replaceWith('/');
 	}
 
+	newMessage(message) {
+		// console.log(message);
+		base.push(`/${this.props.params.chatRoom}/messages`, {
+			data : message,
+			then(err){
+				if(!err){
+					console.log('The message has successfully been sent');
+				}
+			}
+		})
+	}
+
 	renderLogin() {
 		return(
 			<div className="card">
 				<h1>If you wanna join the chat log in, so stop being a creeper and just do it 👇</h1>
 				<button onClick={() => this.authenticate('google')}>Google</button>
+				<button onClick={() => this.authenticate('twitter')}>Twitter</button>
+				<button onClick={() => this.authenticate('facebook')}>facebook</button>
+				<button onClick={() => this.authenticate('github')}>github</button>
 			</div>
 		)
 	}
@@ -95,8 +111,8 @@ class App extends React.Component {
 		const message = this.state.messages[key];
 		// console.log(message);
 		return (
-			<li key={key}>
-				<p>{message.user} says {message.message}</p>
+			<li className="message" key={key}>
+				<p>Somebody says {message.message}</p>
 			</li>
 		)
 	}
@@ -117,13 +133,12 @@ class App extends React.Component {
 		}
 
 		return (
-			<div className="card">
+			<div className="">
 				<h1>You are loggined in</h1>
 				{logout}
 				{changeRoom}
 				<MessageList chatRoom={this.props.params.chatRoom}  />
-				<h1>{this.state.user.name}</h1>
-				<img src={this.state.user.pic} alt=""/>
+				<ComposeMessage user={this.state.user} newMessage={this.newMessage}  />
 			</div>
 		)
 	}
@@ -131,7 +146,6 @@ class App extends React.Component {
 
 App.contextTypes = {
 	router: React.PropTypes.object
-	// router: React.PropTypes.func.isRequired
 }
 
 export default App;

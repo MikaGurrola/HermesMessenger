@@ -4,11 +4,9 @@ class ChatRoomPicker extends React.Component {
 
 	gotToRoom(event) {
 		event.preventDefault();
-		console.log("You changed the url");
-		// first grab the text from the box
+		// console.log("You changed the url");
 		const chatRoom = this.chatRoomInput.value;
-		console.log("Going to " + this.chatRoomInput.value);
-		//second we are going to transition from / to /store/:storeID
+		// console.log("Going to " + this.chatRoomInput.value);
 		this.context.router.transitionTo(`/${chatRoom}`);
 	}
 

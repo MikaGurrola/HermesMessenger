@@ -9,6 +9,7 @@ $ cd app
 $ npm install
 $ npm start
 ```
+If you are editing styles as well do `$ npm run watch`
 
 ## NOOB 🤓
 
