@@ -1,9 +1,5 @@
 import React from 'react';
-// import base from '../base';
-
 class ComposeMessage extends React.Component {
-
-
 	createMessage(event) {
 		event.preventDefault();
 		// console.log('Trying to write a message?');
@@ -33,5 +29,9 @@ class ComposeMessage extends React.Component {
 	}
 }
 
+ComposeMessage.propTypes = {
+	user: React.PropTypes.object.isRequired,
+	newMessage: React.PropTypes.func.isRequired
+}
 
 export default ComposeMessage;

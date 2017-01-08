@@ -1,3 +1,7 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 html,
 body,
 div,
@@ -86,6 +90,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,
@@ -120,28 +125,4 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-img {
-  width: 200px;
-  height: 200px;
-}
-.message {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 15px auto;
-}
-.message img {
-  margin-right: 15px;
-  width: 50px;
-  height: 50px;
-}
-.compose-message {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.compose-message img {
-  width: 50px;
-  height: 50px;
 }

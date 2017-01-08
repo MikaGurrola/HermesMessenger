@@ -1,18 +1,17 @@
-img
-	width: 200px
-	height: 200px
+// base
+@import 'stylus/base/color';
+@import 'stylus/base/reset';
+@import 'stylus/base/typography';
 
-.message
-	display: flex
-	margin: 15px auto
-	img
-		margin-right: 15px
-		width: 50px
-		height: 50px
+// components
+@import 'stylus/components/buttons';
+@import 'stylus/components/navigation';
+@import 'stylus/components/message-list';
 
-.compose-message
-	display: flex
-	img
-		width: 50px
-		height: 50px
-	
+// helpers
+@import 'stylus/helpers/mixins';
+@import 'stylus/helpers/variables';
+
+// layout
+@import 'stylus/layout/grid';
+@import 'stylus/layout/header';

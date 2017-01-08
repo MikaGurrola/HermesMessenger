@@ -21,17 +21,17 @@ class App extends React.Component {
 		}
 	}
 
+	// firebase syncing
 	componentWillMount() {
-		base.fetch(`/${this.props.params.chatRoom}/messages`, {
-			context: this, 
-			asArray: true,
-			then(data) {
-				// console.log(data);
-				this.setState({
-					messages: data,
-				});
-			}
-		});
+		this.ref = base.syncState(`/${this.props.params.chatRoom}/messages`
+			, {
+				context: this,
+				state: 'messages'
+			});
+	}
+
+	componentWillUnmount() {
+		base.removeBinding(this.ref);
 	}
 
 	componentDidMount() {
@@ -65,7 +65,7 @@ class App extends React.Component {
 		});
 	}
 
-	logout(){
+	logout() {
 		base.unauth();
 		this.setState({ uid: null });
 		this.context.router.transitionTo(`/`);
@@ -73,14 +73,7 @@ class App extends React.Component {
 
 	changeRoom() {
 		event.preventDefault();
-		// console.log("You changed the url");
-		this.setState({
-			uid: this.state.uid,
-			pic: this.state.pic,
-			name: this.state.name
-		});
-		// this.context.router.transitionTo(`/`);
-		this.context.router.replaceWith('/');
+		this.context.router.transitionTo(`/`);
 	}
 
 	newMessage(message) {
@@ -134,18 +127,28 @@ class App extends React.Component {
 
 		return (
 			<div className="">
-				<h1>You are loggined in</h1>
+				<h1>Main app component && You are loggined in</h1>
 				{logout}
 				{changeRoom}
-				<MessageList chatRoom={this.props.params.chatRoom}  />
-				<ComposeMessage user={this.state.user} newMessage={this.newMessage}  />
+				<MessageList 
+					params={this.props.params} 
+					messages={this.state.messages}
+				/>
+				<ComposeMessage 
+					user={this.state.user} 
+					newMessage={this.newMessage}
+				/>
 			</div>
 		)
 	}
 }
 
 App.contextTypes = {
-	router: React.PropTypes.object
+	router: React.PropTypes.object.isRequired
+}
+
+App.PropTypes = {
+	params: React.PropTypes.object.isRequired
 }
 
 export default App;

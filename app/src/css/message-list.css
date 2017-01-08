@@ -1,0 +1,24 @@
+img {
+  width: 200px;
+  height: 200px;
+}
+.message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 15px auto;
+}
+.message img {
+  margin-right: 15px;
+  width: 50px;
+  height: 50px;
+}
+.compose-message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.compose-message img {
+  width: 50px;
+  height: 50px;
+}

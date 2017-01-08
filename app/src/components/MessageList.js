@@ -5,13 +5,11 @@ class MessageList extends React.Component {
 	constructor() {
 		super();
 		this.renderMessages = this.renderMessages.bind(this);
-		this.state = {
-			messages : ''
-		}
+		
 	}
 
 	componentWillMount() {
-		this.ref = base.listenTo(`/${this.props.chatRoom}/messages`, {
+		this.ref = base.listenTo(`/${this.props.params.chatRoom}/messages`, {
 			context: this, 
 			asArray: true,
 			then(data) {
@@ -25,9 +23,9 @@ class MessageList extends React.Component {
 	componentWillUnmount() {
 		base.removeBinding(this.ref);
 	}
-	// TODO : Pull this function from App component
+	// TODO : Can I pull this function from App component?
 	renderMessages(key) {
-		const message = this.state.messages[key];
+		const message = this.props.messages[key];
 		// console.log(message);
 		return (
 			<li className="message" key={key}>
@@ -41,9 +39,9 @@ class MessageList extends React.Component {
 		return(
 			<div>
 				<h1>MessageList Component</h1>
-				<h3>Welcome to the {this.props.chatRoom} chat room</h3>
+				<h3>Welcome to the {this.props.params.chatRoom} chat room</h3>
 				<ul className="message-list">
-					{Object.keys(this.state.messages).map(this.renderMessages)}
+					{Object.keys(this.props.messages).map(this.renderMessages)}
 				</ul>
 			</div>
 		)
@@ -52,6 +50,11 @@ class MessageList extends React.Component {
 
 MessageList.contextTypes = {
 	router: React.PropTypes.object
+}
+
+MessageList.propTypes = {
+	params: React.PropTypes.object.isRequired,
+	messages: React.PropTypes.object.isRequired
 }
 
 export default MessageList;
