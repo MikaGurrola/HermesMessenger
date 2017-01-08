@@ -17,8 +17,13 @@ class ComposeMessage extends React.Component {
 		<div>
 			<div>
 				<form className="compose-message" ref={(input) => this.messageForm = input} onSubmit={(e) => this.createMessage(e)}>
-					<input ref={(input) => this.message = input } type="text" placeholder="Hello World"/>
-					<button type="submit">Send</button>
+					<div className="group">
+						<input required ref={(input) => this.message = input } type="text" />
+						<span className="highlight"></span>
+						<span className="bar"></span>
+						<label>Compose</label>
+					</div>
+					<button type="submit"><i className="material-icons">send</i></button>
 				</form>
 			</div>
 		</div>

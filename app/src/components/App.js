@@ -113,8 +113,8 @@ class App extends React.Component {
 	}
 
 	render() {
-		const logout = <button onClick={this.logout}>Log Out!</button>;
-		const changeRoom = <button className="change-room" onClick={this.changeRoom}><i className="material-icons">swap_vertical_circle</i></button>;
+		const logout = <button onClick={this.logout}><i className="material-icons">trending_flat</i></button>;
+		const changeRoom = <button className="change-room" onClick={this.changeRoom}><i className="material-icons">import_export</i></button>;
 
 		// check if they are not logged in at all
 		if(!this.state.user.uid){
@@ -123,7 +123,7 @@ class App extends React.Component {
 							{changeRoom}
 						</nav>
 						
-						<ul className=".message-list-anon">
+						<ul className="message-list-anon">
 							{Object.keys(this.state.messages).map(this.renderMessages)}
 						</ul>
 						{this.renderLogin()}
@@ -133,9 +133,9 @@ class App extends React.Component {
 		return (
 			<div className="">
 				<nav>
-					<h3>Welcome to the {this.props.params.chatRoom} chat room</h3>
-					{logout}
 					{changeRoom}
+					<h3>{this.props.params.chatRoom}</h3>
+					{logout}
 				</nav>
 
 				<MessageList 

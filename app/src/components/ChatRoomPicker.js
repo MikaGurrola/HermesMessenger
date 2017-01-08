@@ -12,6 +12,7 @@ class ChatRoomPicker extends React.Component {
 	render() {
 		return (
 			<form className="room-picker" onSubmit={(e) => this.gotToRoom(e)} >
+				<h1>Hermes Messenger</h1>
 				<h2>Pick a Chat Room</h2>
 				<select name="room" required ref={(input) => { this.chatRoomInput = input}}>
 					<option value="red">red</option>

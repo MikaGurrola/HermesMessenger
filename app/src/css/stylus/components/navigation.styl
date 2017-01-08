@@ -1,28 +1,34 @@
 nav
 	background-color: $gold
-	padding: 15px 0
+	padding: 5px 0
 	position: fixed
 	width: 100%
 	top: 0
 	left: 0
-	box-shadow: $shadow1
+	box-shadow: $shadow2
 	display: flex
+	z-index: 10
+	h3
+		margin: auto
+		color: white
+		text-transform: uppercase
 	button
 		background-color: $gold
-		border: 2px solid white
-		&:hover
-			background-color: white
-			color: $gold
-			border: 2px solid $gold
+		display: flex
+		flex-direction: column
+		i 	
+			border: 0px
+			&:hover
+				border: 0px
 			
 .bottom-nav
-	background-color: gray
+	background-color: white
 	padding: 5px 15px 10px 15px
 	position: fixed
 	bottom: 0
 	left: 0
 	right: 0
-	color: white
+	color: black
 	box-shadow: $shadow1
 	span 
 		line-height: 20px
@@ -35,30 +41,21 @@ nav
 		padding: 10px 0 0 0
 		max-width: 500px
 		margin:0 auto
+		flex-wrap: wrap
 		button
 			margin: 0
 			display: inline-block
+			background-color: white
+			text-transform: uppercase
 		.google
-			background-color: #dd4b39
+			color: #dd4b39
 		.twitter
-			background-color: #1da1f2
+			color: #1da1f2
 		.facebook
-			background-color: #3b5998
+			color: #3b5998
 		.github
-			background-color: #333
+			color: #333
 
-.compose-message
-	position:fixed
-	bottom: 0
-	left: 0
-	right: 0
-	background-color: white
-	padding: 15px
-	display: flex
-	box-shadow: $shadow1
-	input
-		width: 100%
-		padding: 0 10px
 			
 
 

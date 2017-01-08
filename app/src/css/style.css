@@ -121,10 +121,18 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-h2 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-size: 24px;
   line-height: 36px;
   text-align: center;
+  font-family: 'Poiret One', cursive;
+}
+body {
+  font-family: 'Slabo 27px', serif;
 }
 button {
   display: inherit;
@@ -141,41 +149,51 @@ button {
   -webkit-transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.change-room {
-  border: none;
-}
-.change-room:hover {
-  border: none;
+button:hover {
+  cursor: pointer;
 }
 nav {
   background-color: #ffc107;
-  padding: 15px 0;
+  padding: 5px 0;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.34);
+  box-shadow: 0px 0px 28px -9px #000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 10;
+}
+nav h3 {
+  margin: auto;
+  color: #fff;
+  text-transform: uppercase;
 }
 nav button {
   background-color: #ffc107;
-  border: 2px solid #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-nav button:hover {
-  background-color: #fff;
-  color: #ffc107;
-  border: 2px solid #ffc107;
+nav button i {
+  border: 0px;
+}
+nav button i:hover {
+  border: 0px;
 }
 .bottom-nav {
-  background-color: #808080;
+  background-color: #fff;
   padding: 5px 15px 10px 15px;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  color: #fff;
+  color: #000;
   box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.34);
 }
 .bottom-nav span {
@@ -197,56 +215,42 @@ nav button:hover {
   padding: 10px 0 0 0;
   max-width: 500px;
   margin: 0 auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .bottom-nav .login-buttons button {
   margin: 0;
   display: inline-block;
+  background-color: #fff;
+  text-transform: uppercase;
 }
 .bottom-nav .login-buttons .google {
-  background-color: #dd4b39;
+  color: #dd4b39;
 }
 .bottom-nav .login-buttons .twitter {
-  background-color: #1da1f2;
+  color: #1da1f2;
 }
 .bottom-nav .login-buttons .facebook {
-  background-color: #3b5998;
+  color: #3b5998;
 }
 .bottom-nav .login-buttons .github {
-  background-color: #333;
-}
-.compose-message {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  padding: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.34);
-}
-.compose-message input {
-  width: 100%;
-  padding: 0 10px;
+  color: #333;
 }
 .message-list-anon {
-  margin: 62px 0 93px 0;
-  padding: 25px 15px;
+  margin: 56px 0 93px 0;
+  padding: 0 15px;
 }
 .message-list-anon p {
   margin: auto auto auto 0;
+  font-size: 14px;
+  line-height: 20px;
 }
 .message-list {
-  margin: 62px 0 20px 0;
+  margin: 15px 0 20px 0;
   padding: 25px 15px;
 }
 .message-list p {
   margin: auto auto auto 0;
-}
-img {
-  width: 200px;
-  height: 200px;
 }
 .message {
   display: -webkit-box;
@@ -255,32 +259,117 @@ img {
   margin: 15px auto;
 }
 .message img {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
   margin-right: 15px;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+  -webkit-clip-path: circle(50% at 50% 50%);
+          clip-path: circle(50% at 50% 50%);
+}
+.message p {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 14px;
+  line-height: 20px;
 }
 .compose-message {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0px 0px 28px -9px rgba(0,0,0,0.34);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 15px 15px 5px 15px;
 }
-.compose-message img {
-  width: 50px;
-  height: 50px;
+.compose-message button {
+  background-color: #fff;
+  color: #731c47;
+}
+.group {
+  position: relative;
+  width: 100%;
+}
+.group input {
+  font-size: 18px;
+  padding: 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+.group input:focus {
+  outline: none;
+}
+.group label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 5px;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+  letter-spacing: 0.5px;
+}
+input:focus ~ label,
+input:valid ~ label {
+  top: -10px;
+  font-size: 12px;
+  color: #731c47;
+}
+.bar {
+  position: relative;
+  display: block;
+}
+.bar:before,
+.bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #731c47;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+  width: 50%;
 }
 .room-picker {
-  background: #000;
-  color: #fff;
+  background: #731c47;
+  color: #ffc107;
   height: 100vh;
   width: 100vw;
+}
+.room-picker h1 {
+  padding: 10vh 0 5vh 0;
+  font-size: 40px;
 }
 .room-picker h2 {
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
           flex-grow: 3;
-  padding: 40vh 0 10vh 0;
+  margin-bottom: 15px;
 }
 .room-picker select {
   margin: 15px auto;
   display: block;
+}
+.room-picker button {
+  background-color: #731c47;
+  color: #ffc107;
 }
