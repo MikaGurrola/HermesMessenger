@@ -7,15 +7,39 @@ class MessageList extends React.Component {
 		this.renderMessages = this.renderMessages.bind(this);
 	}
 
+	// componentWillUpdate() {
+	//   var node = this.getDOMNode();
+	//   this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
+	// }
+	 
+	// componentDidUpdate() {
+	//   if (this.shouldScrollBottom) {
+	//     var node = this.getDOMNode();
+	//     node.scrollTop = node.scrollHeight
+	//   }
+	// }
+	componentDidUpdate(prevState) {
+	  // Check if new message was added, for example:
+	  if (this.state.messages.length === prevState.messages.length + 1) {
+	    // Scroll to bottom
+	    console.log("someone said something");
+	  }
+	}
+
 	componentWillMount() {
-		this.ref = base.listenTo(`/${this.props.params.chatRoom}/messages`, {
-			context: this, 
-			asArray: true,
-			then(data) {
-				// console.log(data);
-				this.setState({messages: data});
-			}
-		});
+		this.ref = base.syncState(`/${this.props.params.chatRoom}/messages`
+			, {
+				context: this,
+				state: 'messages'
+			});
+		// this.ref = base.listenTo(`/${this.props.params.chatRoom}/messages`, {
+		// 	context: this, 
+		// 	asArray: true,
+		// 	then(data) {
+		// 		// console.log(data);
+		// 		this.setState({messages: data});
+		// 	}
+		// });
 		// console.log(this.state.messages);
 	}
 
