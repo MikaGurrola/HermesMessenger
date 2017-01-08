@@ -5,7 +5,6 @@ class MessageList extends React.Component {
 	constructor() {
 		super();
 		this.renderMessages = this.renderMessages.bind(this);
-		
 	}
 
 	componentWillMount() {
@@ -37,10 +36,8 @@ class MessageList extends React.Component {
 
 	render() {
 		return(
-			<div>
-				<h1>MessageList Component</h1>
-				<h3>Welcome to the {this.props.params.chatRoom} chat room</h3>
-				<ul className="message-list">
+			<div className="message-list">
+				<ul >
 					{Object.keys(this.props.messages).map(this.renderMessages)}
 				</ul>
 			</div>

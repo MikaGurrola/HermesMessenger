@@ -90,12 +90,14 @@ class App extends React.Component {
 
 	renderLogin() {
 		return(
-			<div className="card">
-				<h1>If you wanna join the chat log in, so stop being a creeper and just do it 👇</h1>
-				<button onClick={() => this.authenticate('google')}>Google</button>
-				<button onClick={() => this.authenticate('twitter')}>Twitter</button>
-				<button onClick={() => this.authenticate('facebook')}>facebook</button>
-				<button onClick={() => this.authenticate('github')}>github</button>
+			<div className="bottom-nav">
+				<span>If you wanna join the chat - log in and stop being a creeper 👇</span>
+				<div className="login-buttons">
+					<button className="google" onClick={() => this.authenticate('google')}>Google</button>
+					<button className="twitter" onClick={() => this.authenticate('twitter')}>Twitter</button>
+					<button className="facebook" onClick={() => this.authenticate('facebook')}>Facebook</button>
+					<button className="github" onClick={() => this.authenticate('github')}>Github</button>
+				</div>
 			</div>
 		)
 	}
@@ -112,13 +114,16 @@ class App extends React.Component {
 
 	render() {
 		const logout = <button onClick={this.logout}>Log Out!</button>;
-		const changeRoom = <button onClick={this.changeRoom}>Change Room!</button>;
+		const changeRoom = <button className="change-room" onClick={this.changeRoom}><i className="material-icons">swap_vertical_circle</i></button>;
 
 		// check if they are not logged in at all
 		if(!this.state.user.uid){
 			return <div>
-						{changeRoom}
-						<ul>
+						<nav>
+							{changeRoom}
+						</nav>
+						
+						<ul className=".message-list-anon">
 							{Object.keys(this.state.messages).map(this.renderMessages)}
 						</ul>
 						{this.renderLogin()}
@@ -127,9 +132,12 @@ class App extends React.Component {
 
 		return (
 			<div className="">
-				<h1>Main app component && You are loggined in</h1>
-				{logout}
-				{changeRoom}
+				<nav>
+					<h3>Welcome to the {this.props.params.chatRoom} chat room</h3>
+					{logout}
+					{changeRoom}
+				</nav>
+
 				<MessageList 
 					params={this.props.params} 
 					messages={this.state.messages}
