@@ -8,7 +8,8 @@ class ComposeMessage extends React.Component {
 			image: this.props.user.pic,
 			message: this.message.value
 		}
-		this.props.newMessage(message);
+		// this.props.newMessage(message);
+		this.props.sendMessage(message);
 		this.messageForm.reset();
 	}
 
@@ -32,8 +33,7 @@ class ComposeMessage extends React.Component {
 }
 
 ComposeMessage.propTypes = {
-	user: React.PropTypes.object.isRequired,
-	newMessage: React.PropTypes.func.isRequired
+	user: React.PropTypes.object.isRequired
 }
 
 export default ComposeMessage;

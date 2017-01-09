@@ -3,6 +3,7 @@ import base from '../base.js';
 
 import MessageList from './MessageList';
 import ComposeMessage from './ComposeMessage';
+// import Message from './Message';
 
 class App extends React.Component {
 	constructor(){
@@ -13,8 +14,7 @@ class App extends React.Component {
 		this.logout = this.logout.bind(this);
 		this.changeRoom = this.changeRoom.bind(this);
 		this.renderMessages = this.renderMessages.bind(this);
-		this.newMessage = this.newMessage.bind(this);
-
+		this.sendMessage = this.sendMessage.bind(this);
 		this.state = {
 			user: {},
 			messages: {}
@@ -76,16 +76,12 @@ class App extends React.Component {
 		this.context.router.transitionTo(`/`);
 	}
 
-	newMessage(message) {
-		// console.log(message);
-		base.push(`/${this.props.params.chatRoom}/messages`, {
-			data : message,
-			then(err){
-				if(!err){
-					console.log('The message has successfully been sent');
-				}
-			}
-		})
+	sendMessage(message) {
+		const messages = {...this.state.messages}
+		const timestamp = Date.now();
+		messages[`${timestamp}`] = message;
+		// console.log(messages);
+		this.setState({messages});
 	}
 
 	renderLogin() {
@@ -143,8 +139,8 @@ class App extends React.Component {
 					messages={this.state.messages}
 				/>
 				<ComposeMessage 
-					user={this.state.user} 
-					newMessage={this.newMessage}
+					user={this.state.user}
+					sendMessage={this.sendMessage}
 				/>
 			</div>
 		)
