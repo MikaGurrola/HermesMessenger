@@ -2,6 +2,7 @@ import React from 'react';
 import base from '../base.js';
 
 import MessageList from './MessageList';
+// import CreeperList from './CreeperList';
 import ComposeMessage from './ComposeMessage';
 // import Message from './Message';
 
@@ -118,10 +119,11 @@ class App extends React.Component {
 						<nav>
 							{changeRoom}
 						</nav>
-						
-						<ul className="message-list-anon">
-							{Object.keys(this.state.messages).map(this.renderMessages)}
-						</ul>
+						<MessageList 
+							user={this.state.user}
+							params={this.props.params} 
+							messages={this.state.messages}
+						/>
 						{this.renderLogin()}
 					</div>
 		}
@@ -135,6 +137,7 @@ class App extends React.Component {
 				</nav>
 
 				<MessageList 
+					user={this.state.user}
 					params={this.props.params} 
 					messages={this.state.messages}
 				/>
@@ -154,5 +157,9 @@ App.contextTypes = {
 App.PropTypes = {
 	params: React.PropTypes.object.isRequired
 }
+
+// <ul className="message-list-anon">
+// 	{Object.keys(this.state.messages).map(this.renderMessages)}
+// </ul>
 
 export default App;

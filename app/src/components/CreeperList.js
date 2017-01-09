@@ -1,8 +1,7 @@
 import React from 'react';
 import Message from './Message';
 
-class MessageList extends React.Component {
-
+class CreeperList extends React.Component {
 	componentWillUpdate(nextState) {
 		this.newestMessage.scrollIntoView();
 	}
@@ -18,7 +17,7 @@ class MessageList extends React.Component {
 					{
 						Object
 							.keys(this.props.messages)
-							.map(key => <Message  key={key} user={this.props.user} details={this.props.messages[key]} />)
+							.map(key => <Message key={key} user={this.props.user} details={this.props.messages[key]} />)
 					}
 				</ul>
 				<div className="bottom" ref={node => this.newestMessage = node} />
@@ -36,4 +35,4 @@ class MessageList extends React.Component {
 // 	messages: React.PropTypes.object.isRequired
 // }
 
-export default MessageList;
+export default CreeperList;
