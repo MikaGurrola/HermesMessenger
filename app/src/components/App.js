@@ -1,10 +1,7 @@
 import React from 'react';
 import base from '../base.js';
-
 import MessageList from './MessageList';
-// import CreeperList from './CreeperList';
 import ComposeMessage from './ComposeMessage';
-// import Message from './Message';
 
 class App extends React.Component {
 	constructor(){
@@ -14,7 +11,6 @@ class App extends React.Component {
 		this.authenticate = this.authenticate.bind(this);
 		this.logout = this.logout.bind(this);
 		this.changeRoom = this.changeRoom.bind(this);
-		this.renderMessages = this.renderMessages.bind(this);
 		this.sendMessage = this.sendMessage.bind(this);
 		this.state = {
 			user: {},
@@ -99,21 +95,11 @@ class App extends React.Component {
 		)
 	}
 
-	renderMessages(key) {
-		const message = this.state.messages[key];
-		// console.log(message);
-		return (
-			<li className="message" key={key}>
-				<p>Somebody says {message.message}</p>
-			</li>
-		)
-	}
-
 	render() {
 		const logout = <button onClick={this.logout}><i className="material-icons">trending_flat</i></button>;
 		const changeRoom = <button className="change-room" onClick={this.changeRoom}><i className="material-icons">import_export</i></button>;
 
-		// check if they are not logged in at all
+		// If user is not logged in 
 		if(!this.state.user.uid){
 			return <div>
 						<nav>
@@ -157,9 +143,5 @@ App.contextTypes = {
 App.PropTypes = {
 	params: React.PropTypes.object.isRequired
 }
-
-// <ul className="message-list-anon">
-// 	{Object.keys(this.state.messages).map(this.renderMessages)}
-// </ul>
 
 export default App;

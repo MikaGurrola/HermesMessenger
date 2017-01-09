@@ -8,7 +8,6 @@ class ComposeMessage extends React.Component {
 			image: this.props.user.pic,
 			message: this.message.value
 		}
-		// this.props.newMessage(message);
 		this.props.sendMessage(message);
 		this.messageForm.reset();
 	}
