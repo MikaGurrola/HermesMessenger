@@ -24,7 +24,7 @@ class MessageList extends React.Component {
 								.map(key => <Message  key={key} user={this.props.user} details={this.props.messages[key].message} />)
 						}
 					</ul>
-					<div className="bottom" ref={node => this.newestMessage = node} />
+					<div className="bottom-anon" ref={node => this.newestMessage = node} />
 				</div>
 			 )
 		}

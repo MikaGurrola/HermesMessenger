@@ -1,7 +1,12 @@
 import React from 'react';
 
 class ChatRoomPicker extends React.Component {
-	gotToRoom(event) {
+	constructor(){
+		super();
+		this.goToRoom = this.goToRoom.bind(this);
+	}
+
+	goToRoom(event) {
 		event.preventDefault();
 		// console.log("You changed the url");
 		const chatRoom = this.chatRoomInput.value;
@@ -11,7 +16,7 @@ class ChatRoomPicker extends React.Component {
 
 	render() {
 		return (
-			<form className="room-picker" onSubmit={(e) => this.gotToRoom(e)} >
+			<form className="room-picker" onSubmit={(e) => this.goToRoom(e)} >
 				<h1>Hermes Messenger</h1>
 				<h2>Pick a Chat Room</h2>
 				<select name="room" required ref={(input) => { this.chatRoomInput = input}}>
@@ -26,7 +31,7 @@ class ChatRoomPicker extends React.Component {
 }
 
 ChatRoomPicker.contextTypes = {
-	router: React.PropTypes.object.isRequired
+	router: React.PropTypes.object
 }
 
 export default ChatRoomPicker;

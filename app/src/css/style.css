@@ -353,6 +353,28 @@ input:focus ~ .bar:after {
   height: 1px;
   margin-bottom: 45px;
 }
+.bottom-anon {
+  height: 1px;
+  margin-bottom: 76px;
+}
+@media screen and (max-width: 434px) {
+  .bottom-anon {
+    margin-bottom: 101px;
+  }
+}
+@media screen and (max-width: 412px) {
+  .bottom-anon {
+    margin-bottom: 121px;
+  }
+}
+@media screen and (max-width: 237px) {
+  .bottom-anon {
+    margin-bottom: 146px;
+  }
+}
+input:invalid {
+  box-shadow: none;
+}
 .room-picker {
   background: #731c47;
   color: #ffc107;

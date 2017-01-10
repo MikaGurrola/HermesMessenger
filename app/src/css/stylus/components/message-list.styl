@@ -94,7 +94,19 @@ input:focus ~ .bar:before, input:focus ~ .bar:after
 .bottom
 	height: 1px
 	margin-bottom: 45px
+	
+.bottom-anon
+	height: 1px
+	margin-bottom: 76px
+	@media screen and (max-width: 434px)
+		margin-bottom: 101px
+	@media screen and (max-width: 412px)
+		margin-bottom: 121px
+	@media screen and (max-width: 237px)
+		margin-bottom: 146px
 
 
-
-
+// removes required highlight in firefox
+input:invalid {
+    box-shadow: none;
+}

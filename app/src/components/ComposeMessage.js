@@ -31,8 +31,8 @@ class ComposeMessage extends React.Component {
 	}
 }
 
-ComposeMessage.propTypes = {
-	user: React.PropTypes.object.isRequired
-}
+// ComposeMessage.propTypes = {
+// 	user: React.PropTypes.object.isRequired
+// }
 
 export default ComposeMessage;

@@ -36,7 +36,7 @@ class App extends React.Component {
 			if(user){
 				this.authHandler(null, {user});
 			}
-		})
+		});
 	}
 
 	authenticate(provider) {
@@ -45,7 +45,6 @@ class App extends React.Component {
 	}
 
 	authHandler(err, authData) {
-		event.preventDefault();
 		// console.log(authData); 
 		if(err){
 			console.error(err);
@@ -55,9 +54,9 @@ class App extends React.Component {
 
 		this.setState({
 			user: {
-			uid: authData.user.uid,
-			pic: authData.user.photoURL,
-			name: authData.user.displayName
+				uid: authData.user.uid,
+				pic: authData.user.photoURL,
+				name: authData.user.displayName
 			}
 		});
 	}
@@ -69,7 +68,6 @@ class App extends React.Component {
 	}
 
 	changeRoom() {
-		event.preventDefault();
 		this.context.router.transitionTo(`/`);
 	}
 
